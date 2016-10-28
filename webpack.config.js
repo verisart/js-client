@@ -8,6 +8,6 @@ module.exports = {
         filename: "verisart-client.js"
     },
     plugins: [
-      new webpack.optimize.UglifyJsPlugin({minimize: true})
+      new webpack.optimize.UglifyJsPlugin({minimize: true, screw_ie8: false})
     ]
 }
