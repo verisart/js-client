@@ -1,12 +1,12 @@
 {
   "name": "verisart-client",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Library for generating statements in cidoc-crm",
   "author": "Dan Riley <daniel@verisart.com>",
   "contributors": [
     ""
   ],
-  "main": "lib/verisart-client.js",
+  "browser": "dist/verisart-client.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/verisart/js-client"
@@ -21,9 +21,18 @@
   "analyze": true,
   "license": "MIT",
   "scripts": {
-    "clean": "rimraf lib",
+    "clean": "rimraf lib dist",
     "build": "webpack --config webpack.config.js",
-    "prepublish": "npm run clean && npm run build && check-es3-syntax lib/ --kill --print",
+    "prepublish": "npm run clean && npm run build && check-es3-syntax dist/ --kill --print",
     "test": "echo \"Error: no test specified\" && exit 1"
-  }
+  },
+  "npmName": "verisart-client",
+  "npmFileMap": [
+    {
+      "basePath": "/dist/",
+      "files": [
+        "*.js"
+      ]
+    }
+  ]
 }

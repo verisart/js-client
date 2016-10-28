@@ -4,7 +4,7 @@ var webpack = require("webpack");
 module.exports = {
     entry: "./src/index.js",
     output: {
-        path: "lib",
+        path: "dist",
         filename: "verisart-client.js"
     },
     plugins: [
