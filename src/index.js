@@ -2,6 +2,6 @@ var contextConstants = require('./constants/context');
 var crmConstants = require('./constants/crm');
 
 module.export = {
-  contexts: contextConstants,
+  rdf: contextConstants,
   crm: crmConstants
 }

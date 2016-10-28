@@ -1,6 +1,6 @@
 
 module.exports = {
-  rdfContexts: {
+  contexts: {
       "http://www.verisart.com/id/2015/v1/": {
           "aat": "http://vocab.getty.edu/aat/",
           "crm": "http://www.cidoc-crm.org/cidoc-crm/",
@@ -14,6 +14,6 @@ module.exports = {
       },
       "http://www.verisart.com/id/blank": {}
   },
-  defaultRDFContext: "http://www.verisart.com/id/2015/v1/",
-  blankRDFContext: "http://www.verisart.com/id/blank"
+  defaultContext: "http://www.verisart.com/id/2015/v1/",
+  blankContext: "http://www.verisart.com/id/blank"
 }
