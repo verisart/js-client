@@ -1,9 +1,12 @@
+'use strict'
 
 var webpack = require("webpack");
 
 module.exports = {
     entry: "./src/index.js",
     output: {
+        library: 'VerisartClient',
+        libraryTarget: 'umd',
         path: "dist",
         filename: "verisart-client.js"
     },
