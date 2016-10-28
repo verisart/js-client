@@ -1,6 +1,6 @@
 {
   "name": "verisart-client",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Library for generating statements in cidoc-crm",
   "author": "Dan Riley <daniel@verisart.com>",
   "contributors": [
@@ -20,6 +20,7 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack --config webpack.config.js",
+    "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
