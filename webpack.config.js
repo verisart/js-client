@@ -12,5 +12,10 @@ module.exports = {
     },
     plugins: [
       new webpack.optimize.UglifyJsPlugin({minimize: true, screw_ie8: false})
-    ]
+    ],
+    module: {
+        loaders: [
+            { test: /\.json$/, loader: 'json-loader'}
+        ]
+    }
 }
