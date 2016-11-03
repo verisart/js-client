@@ -13,7 +13,7 @@ StmtWriter.prototype.setSubjectIRI = function(iri) {
   if (!iri || typeof iri !== 'string' || iri.length === 0) {
     return;
   }
-  
+
   this.stmt['@id'] = iri;
 }
 
@@ -39,8 +39,17 @@ function newUpdateActorStmtWriter(iri) {
 
 
 
-function writeActorStmt(payload, cb) {
-  var writer = newActorStmtWriter();
+function writeCreateActorStmt(payload, cb) {
+  var writer = newCreateActorStmtWriter();
+  if (payload.actorName) {
+    writer.addActorName(payload.actorName);
+  }
+  writer.complete();
+  writer.frame(cb);
+}
+
+function writeUpdateActorStmt(iri, payload, cb) {
+  var writer = newUpdateActorStmtWriter(iri);
   if (payload.actorName) {
     writer.addActorName(payload.actorName);
   }
@@ -89,6 +98,6 @@ StmtWriter.prototype.frame = function(cb) {
 
 module.exports = {
   StmtWriter: StmtWriter,
-  newActorStmtWriter: newActorStmtWriter,
-  writeActorStmt: writeActorStmt
+  writeCreateActorStmt: writeCreateActorStmt,
+  writeUpdateActorStmt: writeUpdateActorStmt
 };
