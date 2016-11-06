@@ -10,7 +10,7 @@ function StmtWriter(subjectIRI, subjectTypeIRI) {
 }
 
 StmtWriter.prototype.setSubjectIRI = function(iri) {
-  if (!iri || typeof iri !== 'string' || iri.length === 0) {
+  if (!iri || typeof iri !== 'string' || !iri.length) {
     return;
   }
 
@@ -18,7 +18,7 @@ StmtWriter.prototype.setSubjectIRI = function(iri) {
 }
 
 StmtWriter.prototype.setSubjectTypeIRI = function(iri) {
-  if (!iri || typeof iri !== 'string' || iri.length === 0) {
+  if (!iri || typeof iri !== 'string' || !iri.length) {
     return;
   }
 
@@ -33,28 +33,36 @@ function newCreateActorStmtWriter() {
 
 function newUpdateActorStmtWriter(iri) {
   var writer = new StmtWriter();
-  writer.setSubject(iri);
+  writer.setSubjectIRI(iri);
   return writer;
 }
 
 
 
 function writeCreateActorStmt(payload, cb) {
-  var writer = newCreateActorStmtWriter();
-  if (payload.actorName) {
-    writer.addActorName(payload.actorName);
+  return writeActorPayload(newCreateActorStmtWriter(), payload, cb);
+}
+
+function writeActorPayload(writer, payload, cb) {
+  try {
+    if (payload.actorName) {
+      writer.addActorName(payload.actorName);
+    }
+
+    if (payload.signatureImage) {
+      writer.addSignatureImage(payload.signatureImage);
+    }
+  } catch (err) {
+    cb(err);
+    return;
   }
+
   writer.complete();
   writer.frame(cb);
 }
 
 function writeUpdateActorStmt(iri, payload, cb) {
-  var writer = newUpdateActorStmtWriter(iri);
-  if (payload.actorName) {
-    writer.addActorName(payload.actorName);
-  }
-  writer.complete();
-  writer.frame(cb);
+  return writeActorPayload(newUpdateActorStmtWriter(iri), payload, cb);
 }
 
 function assignArrayValue(object, path, value) {
@@ -64,8 +72,8 @@ function assignArrayValue(object, path, value) {
 }
 
 StmtWriter.prototype.addActorName = function(actorName) {
-  if (typeof actorName !== 'string') {
-    return
+  if (typeof actorName !== 'string' || !actorName.length) {
+    throw new Error('Actor Name is empty or not formatted properly (it should be a string).');
   }
 
   var actorNameNode = {};
@@ -75,9 +83,21 @@ StmtWriter.prototype.addActorName = function(actorName) {
   assignArrayValue(this.stmt, crm.P131_IS_IDENTIFIED_BY_IRI, actorNameNode);
 };
 
+StmtWriter.prototype.addSignatureImage = function(signatureImage) {
+  if (typeof signatureImage !== 'object' || typeof signatureImage.hashKey !== 'string' || !signatureImage.hashKey.length) {
+    throw new Error('Signature Image is empty or not formatted properly (it should be an object with a hash key).');
+  }
+
+  var signatureNode = {};
+  signatureNode['@type'] = crm.E73_INFORMATION_OBJECT_IRI;
+  signatureNode[crm.PX_HASH_KEY_IRI] = signatureImage.hashKey;
+
+  assignArrayValue(this.stmt, crm.PX_IMAGE_SIGNATURE_IRI, signatureNode);
+};
+
 
 StmtWriter.prototype.complete = function() {
-  if (!this.stmt['@id'] && ! this.stmt['@type']) {
+  if (!this.stmt['@id'] && !this.stmt['@type']) {
     // Can't complete not enough info
     return;
   }
@@ -87,7 +107,7 @@ StmtWriter.prototype.complete = function() {
 
 StmtWriter.prototype.frame = function(cb) {
   if (!this.completed) {
-    cb('The writer is not complete');
+    cb(new Error('The writer is not complete'));
     return;
   }
 
@@ -97,7 +117,6 @@ StmtWriter.prototype.frame = function(cb) {
 };
 
 module.exports = {
-  StmtWriter: StmtWriter,
   writeCreateActorStmt: writeCreateActorStmt,
   writeUpdateActorStmt: writeUpdateActorStmt
 };

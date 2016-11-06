@@ -1,6 +1,6 @@
 {
   "name": "verisart-client",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "Library for generating statements in cidoc-crm",
   "author": "Dan Riley <daniel@verisart.com>",
   "contributors": [
