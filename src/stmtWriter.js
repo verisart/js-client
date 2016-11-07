@@ -89,10 +89,13 @@ StmtWriter.prototype.addSignatureImage = function(signatureImage) {
   }
 
   var signatureNode = {};
-  signatureNode['@type'] = crm.E73_INFORMATION_OBJECT_IRI;
+  signatureNode['@type'] = crm.E31_DOCUMENT_IRI;
   signatureNode[crm.PX_HASH_KEY_IRI] = signatureImage.hashKey;
+  signatureNode[crm.P2_HAS_TYPE_IRI] = {
+    '@id': crm.SIGNATURE_TYPE_IMAGE_IRI
+  };
 
-  assignArrayValue(this.stmt, crm.PX_IMAGE_SIGNATURE_IRI, signatureNode);
+  assignArrayValue(this.stmt, crm.PX1_PRODUCED_SIGNATURE_DOCUMENT_IRI, signatureNode);
 };
 
 

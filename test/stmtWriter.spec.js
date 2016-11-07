@@ -10,9 +10,12 @@ var testPayload = {
 
 var testJSONLD = {
   '@context': rdf.contexts[rdf.defaultContext],
-  'vart:PX_image_signature': {
-    '@type': 'crm:E73_Information_Object', 
-    'vart:PX_hash_key': 'deadbeef'
+  'vart:PX1_produced_signature_document': {
+    '@type': 'crm:E31_Document', 
+    'vart:PX_hash_key': 'deadbeef',
+    'crm:P2_has_type': {
+      '@id': 'thes:signature/image'
+    }
   },
   'crm:P131_is_identified_by': {
     '@type': 'crm:E82_Actor_Appellation',
