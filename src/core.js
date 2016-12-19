@@ -47004,7 +47004,7 @@ $packages["github.com/verisart/go-prov/certify"] = (function() {
 	};
 	$pkg.CertifyObject = CertifyObject;
 	ptrType$5.methods = [{prop: "AppendErr", name: "AppendErr", pkg: "", typ: $funcType([$String, $Bool, $error], [], false)}, {prop: "AppendErrOnce", name: "AppendErrOnce", pkg: "", typ: $funcType([$String, $Bool, $error], [], false)}, {prop: "AppendFieldRequiredErr", name: "AppendFieldRequiredErr", pkg: "", typ: $funcType([$String], [], false)}, {prop: "Complete", name: "Complete", pkg: "", typ: $funcType([], [$emptyInterface, ptrType], false)}];
-	SignatureDocument.init("", [{prop: "Type", name: "Type", exported: true, typ: $String, tag: "json:\"signatureDocument\""}, {prop: "HashKey", name: "HashKey", exported: true, typ: $String, tag: "json:\"hashKey\""}]);
+	SignatureDocument.init("", [{prop: "Type", name: "Type", exported: true, typ: $String, tag: "json:\"type\""}, {prop: "HashKey", name: "HashKey", exported: true, typ: $String, tag: "json:\"hashKey\""}]);
 	CertifyActorArgs.init("", [{prop: "ActorIRI", name: "ActorIRI", exported: true, typ: $String, tag: "json:\"actorIRI\""}, {prop: "ActorName", name: "ActorName", exported: true, typ: $String, tag: "json:\"actorName\""}, {prop: "SignatureDocument", name: "SignatureDocument", exported: true, typ: ptrType$1, tag: "json:\"signatureDocument\""}]);
 	certifier.init("github.com/verisart/go-prov/certify", [{prop: "errRes", name: "errRes", exported: false, typ: ptrType, tag: ""}, {prop: "errGen", name: "errGen", exported: false, typ: errorgen.ErrorGenerator, tag: ""}, {prop: "stmt", name: "stmt", exported: false, typ: stmtwriter.StmtWriter, tag: ""}]);
 	Dimension.init("", [{prop: "Value", name: "Value", exported: true, typ: $String, tag: "json:\"value\""}, {prop: "Unit", name: "Unit", exported: true, typ: $String, tag: "json:\"unit\""}, {prop: "Type", name: "Type", exported: true, typ: $String, tag: "json:\"type\""}]);
@@ -47264,8 +47264,8 @@ $packages["github.com/verisart/go-prov/subprojects/gengopherjs"] = (function() {
 		$module.exports = $externalize($makeMap($String.keyFor, [{ k: "crm", v: new mapType(crmConsts) }, { k: "certify", v: new mapType(certifyConsts) }, { k: "certifyObject", v: new funcType(CertifyObject) }, { k: "certifyActor", v: new funcType(CertifyActor) }]), mapType);
 	};
 	CertifyObject = function(args) {
-		var $ptr, _r, _r$1, _r$2, _r$3, _r$4, _tuple, _tuple$1, _tuple$2, args, b, b2, err, res, wArgs, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $ptr = $f.$ptr; _r = $f._r; _r$1 = $f._r$1; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; _tuple$2 = $f._tuple$2; args = $f.args; b = $f.b; b2 = $f.b2; err = $f.err; res = $f.res; wArgs = $f.wArgs; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		var $ptr, _r, _r$1, _r$2, _r$3, _tuple, _tuple$1, args, b, err, res, wArgs, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $ptr = $f.$ptr; _r = $f._r; _r$1 = $f._r$1; _r$2 = $f._r$2; _r$3 = $f._r$3; _tuple = $f._tuple; _tuple$1 = $f._tuple$1; args = $f.args; b = $f.b; err = $f.err; res = $f.res; wArgs = $f.wArgs; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		wArgs = [wArgs];
 		wArgs[0] = new certify.CertifyObjectArgs.ptr("", "", "", "", "", sliceType.nil, "", sliceType$1.nil);
 		_r = json.Marshal(args); /* */ $s = 1; case 1: if($c) { $c = false; _r = _r.$blk(); } if (_r && _r.$blk !== undefined) { break s; }
@@ -47273,24 +47273,20 @@ $packages["github.com/verisart/go-prov/subprojects/gengopherjs"] = (function() {
 		b = _tuple[0];
 		_r$1 = json.Unmarshal(b, (wArgs.$ptr || (wArgs.$ptr = new ptrType$5(function() { return this.$target[0]; }, function($v) { this.$target[0] = $v; }, wArgs)))); /* */ $s = 2; case 2: if($c) { $c = false; _r$1 = _r$1.$blk(); } if (_r$1 && _r$1.$blk !== undefined) { break s; }
 		_r$1;
-		_r$2 = json.Marshal(wArgs[0]); /* */ $s = 3; case 3: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
+		_r$2 = certify.CertifyObject(errGen, wArgs[0]); /* */ $s = 3; case 3: if($c) { $c = false; _r$2 = _r$2.$blk(); } if (_r$2 && _r$2.$blk !== undefined) { break s; }
 		_tuple$1 = _r$2;
-		b2 = _tuple$1[0];
-		console.log($bytesToString(b2));
-		_r$3 = certify.CertifyObject(errGen, wArgs[0]); /* */ $s = 4; case 4: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
-		_tuple$2 = _r$3;
-		res = _tuple$2[0];
-		err = _tuple$2[1];
-		/* */ if (!(err === ptrType$6.nil)) { $s = 5; continue; }
-		/* */ $s = 6; continue;
-		/* if (!(err === ptrType$6.nil)) { */ case 5:
-			_r$4 = Unwrap(err); /* */ $s = 7; case 7: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
-			$s = -1; return [res, new js.M(_r$4)];
-			return [res, new js.M(_r$4)];
-		/* } */ case 6:
+		res = _tuple$1[0];
+		err = _tuple$1[1];
+		/* */ if (!(err === ptrType$6.nil)) { $s = 4; continue; }
+		/* */ $s = 5; continue;
+		/* if (!(err === ptrType$6.nil)) { */ case 4:
+			_r$3 = Unwrap(err); /* */ $s = 6; case 6: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+			$s = -1; return [res, new js.M(_r$3)];
+			return [res, new js.M(_r$3)];
+		/* } */ case 5:
 		$s = -1; return [res, $ifaceNil];
 		return [res, $ifaceNil];
-		/* */ } return; } if ($f === undefined) { $f = { $blk: CertifyObject }; } $f.$ptr = $ptr; $f._r = _r; $f._r$1 = _r$1; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f._tuple$2 = _tuple$2; $f.args = args; $f.b = b; $f.b2 = b2; $f.err = err; $f.res = res; $f.wArgs = wArgs; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: CertifyObject }; } $f.$ptr = $ptr; $f._r = _r; $f._r$1 = _r$1; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._tuple = _tuple; $f._tuple$1 = _tuple$1; $f.args = args; $f.b = b; $f.err = err; $f.res = res; $f.wArgs = wArgs; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	$pkg.CertifyObject = CertifyObject;
 	CertifyActor = function(args) {
