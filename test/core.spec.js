@@ -1,7 +1,4 @@
-var stmtWriter = require('../src/stmtWriter');
-var crm = require('../src/constants/crm');
-var rdf = require('../src/constants/rdf');
-
+var core = require('../src/core');
 
 var testPayload = {
   actorName: 'Bob',
@@ -9,7 +6,7 @@ var testPayload = {
 };
 
 var testJSONLD = {
-  '@context': rdf.contexts[rdf.defaultContext],
+  '@context': {},/*rdf.contexts[rdf.defaultContext],*/
   'vart:PX1_produced_signature_document': {
     '@type': 'crm:E31_Document', 
     'vart:PX_hash_key': 'deadbeef',
@@ -25,6 +22,47 @@ var testJSONLD = {
 
 var testActorIRI = 'http://www.verisart.com/id/actor/someuuid';
 
+var testObjectPayload = {
+  [core.certify.FieldNameArtistName]: "Bob",
+  [core.certify.FieldNameTitle]: "My title",
+  [core.certify.FieldNameDimensions]: [
+    {
+      type: core.crm.DimensionTermHeight,
+      unit: core.crm.UnitTermInch,
+      value: "100"
+    }
+  ],
+  [core.certify.FieldNameMedium]: "a medium",
+  [core.certify.FieldNameImages]: [
+    {
+      hashKey: 'somehashkey',
+      type: core.crm.ImageDocumentFront,
+      captureContext: core.crm.CaptureContextWebUpload
+    }
+  ]
+};
+
+
+
+
+describe('certifyObject', function() {
+  it('writes a statement to create an object entity', function () {
+    let [result, error] = core.certifyObject(testObjectPayload);
+    //console.log(testObjectPayload);
+    //console.log(error.errors);
+    expect(result).toBeTruthy();
+    expect(error).toBeFalsy();
+    /*
+    return new Promise(function(resolve, reject) {
+      var writer = core.certify.certifyObject(testPayload, function (err, res) {
+        expect(err).toBeFalsy();
+        expect(res).toEqual(Object.assign({'@type': 'crm:E39_Actor'}, testJSONLD));
+        resolve();
+      })
+    });*/
+  })
+});
+/*
 
 describe('writeCreateActorStmt', function() {
   pit('writes a statement to create an actor entity', function () {
@@ -48,4 +86,4 @@ describe('writeUpdateActorStmt', function() {
       })
     });
   })
-});
+});*/

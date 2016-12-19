@@ -1,5 +1,4 @@
 var stmtSigner = require('../src/stmtSigner');
-var crm = require('../src/constants/crm');
 
 describe('StmtSigner', function() {
   it('creates a StmtSigner and signs a message', function () {

@@ -1,11 +1,7 @@
-var crmConstants = require('./constants/crm');
-var rdfConstants = require('./constants/rdf');
 var stmtSigner = require('./stmtSigner');
-var stmtWriter = require('./stmtWriter');
+var core = require('./core');
 
 module.exports = {
-  rdf: rdfConstants,
-  crm: crmConstants,
-  stmtSigner: stmtSigner,
-  stmtWriter: stmtWriter
+  core: core,
+  stmtSigner: stmtSigner
 };
