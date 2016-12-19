@@ -35,9 +35,9 @@ var testObjectPayload = {
   [core.certify.FieldNameMedium]: "a medium",
   [core.certify.FieldNameImages]: [
     {
-      hashKey: 'somehashkey',
-      type: core.crm.ImageDocumentFront,
-      captureContext: core.crm.CaptureContextWebUpload
+      [core.certify.FieldNameHashKey]: 'somehashkey',
+      [core.certify.FieldNameDocumentType]: core.crm.ImageDocumentFront,
+      [core.certify.FieldNameCaptureContext]: core.crm.CaptureContextWebUpload
     }
   ]
 };
