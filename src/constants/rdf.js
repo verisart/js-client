@@ -1,4 +1,4 @@
-
+/*
 
 var RDF_SYNTAX_NS = "http://www.w3.org/1999/02/22-rdf-syntax-ns#";
 var RDF_SCHEMA_NS = "http://www.w3.org/2000/01/rdf-schema#";
@@ -78,3 +78,4 @@ module.exports = {
 	OWL_SAME_AS: OWL_SAME_AS,
 	RDFS_LABEL: RDFS_LABEL
 }
+*/

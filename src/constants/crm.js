@@ -1,5 +1,5 @@
 
-
+/*
 var E49_TIME_APPELLATION_IRI = "http://www.cidoc-crm.org/cidoc-crm/E49_Time_Appellation";
 var E48_PLACE_NAME_IRI = "http://www.cidoc-crm.org/cidoc-crm/E48_Place_Name";
 var E74_GROUP_IRI = "http://www.cidoc-crm.org/cidoc-crm/E74_Group";
@@ -823,3 +823,4 @@ module.exports = {
 	CAPTURE_CONTEXT_WEB_UPLOAD_IRI: CAPTURE_CONTEXT_WEB_UPLOAD_IRI,
 	VerisartBaseTypes: VerisartBaseTypes
 }
+*/

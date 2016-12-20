@@ -1,24 +1,9 @@
+/*
+
 var jsonLD = require('jsonld');
 var rdf = require('./constants/rdf');
 var crm = require('./constants/crm');
 
-/*
-var iriPattern = '(?:<([^:]+:[^>]*)>)';
-var plainPattern = '"([^"\\\\]*(?:\\\\.[^"\\\\]*)*)"';
-var datatypePattern = '(?:\\^\\^' + iri + ')';
-var languagePattern = '(?:@([a-z]+(?:-[a-z0-9]+)*))';
-var literalPattern = '(?:' + plainRegEx + '(?:' + datatypeRegEx + '|' + languageRegEx + ')?)';
-
-var literalRegExp = new RegExp('^' + literal + '$');
-
-function isNonEmptyLiteral(literal) {
-  if (!isNonEmptyString(literal)) {
-    return false;
-  }
-
-  return literalRegExp.text(literal);
-}
-*/
 
 function createLiteral(literal, opt_datatype, opt_language) {
   var res = {
@@ -184,10 +169,6 @@ StmtWriter.prototype.addTitle = function(title) {
   assignArrayValue(this.stmt, crm.P102_HAS_TITLE_IRI, titleNode);
 };
 
-/*
- Edition has an index which must be an integer or AP, HC, etc., and then a volume
- which can be any string.
-*/
 StmtWriter.prototype.addEdition = function(edition) {
   if (!isObject(edition) || (!isNonEmptyString(edition.index) && !isNonEmptyString(edition.volume))) {
     throw new Error('Edition is empty or not formatted properly (it should be an object with index and/or volume properties).');
@@ -315,216 +296,6 @@ StmtWriter.prototype.addProductionDate = function(productionDate) {
 
 };
 
-/*
-
-
-
-func (stmt *stmtWriter) AddProductionDate(date *crmjson.Literal) error {
-  if date == nil || date.IsEmpty() {
-    return ErrParamEmpty
-  }
-
-  if date.Datatype != crm.XSDGYear {
-    return newStmtWriterErr(
-      ErrCodeDateTypeUnknown,
-      func(T goi18n.TranslateFunc) string {
-        return T("Dates must use a year datatype.")
-      })
-  }
-
-  if !crmjson.ValidateDate(date.Value, date.Datatype) {
-    return newStmtWriterErr(
-      ErrCodeDateInvalid,
-      func(T goi18n.TranslateFunc) string {
-        return T("The date should be a valid year in the format YYYY.")
-      })
-  }
-
-  timespan := stmt.entity.NewTypedBlankNode(crm.E52_TIME_SPAN_IRI)
-  timespan.ConnectLiteral(crm.P82_AT_SOME_TIME_WITHIN_IRI, date)
-  production := stmt.getOrCreateProduction()
-  production.ConnectObject(crm.P4_HAS_TIME_SPAN_IRI, timespan)
-  return nil
-}
-
-func (stmt *stmtWriter) AddDimension(dim crm.DimensionTerm, unit crm.UnitTerm, value *crmjson.Literal) error {
-  if value == nil || value.IsEmpty() {
-    return ErrParamEmpty
-  }
-
-  if !crmjson.ValidateDimension(value.Value, unit) {
-    return newStmtWriterErr(
-      ErrCodeDimensionInvalid,
-      func(T goi18n.TranslateFunc) string {
-        return T("Dimensions must be numeric.")
-      })
-  }
-
-  dimension := stmt.entity.NewTypedBlankNode(crm.E54_DIMENSION_IRI)
-  stmt.entity.Root().ConnectObject(crm.P43_HAS_DIMENSION_IRI, dimension)
-
-  dimTermNode := stmt.entity.NewIRINode(dim.IRI())
-  dimTermNode.SetRDFType(crm.E55_TYPE_IRI)
-  dimTermNode.SetRDFLabel(crmjson.NewStringLiteral(dim.Label()))
-
-  unitTermNode := stmt.entity.NewIRINode(unit.IRI())
-  unitTermNode.SetRDFType(crm.E58_MEASUREMENT_UNIT_IRI)
-  unitTermNode.SetRDFLabel(crmjson.NewStringLiteral(unit.Label()))
-
-  dimension.ConnectObject(crm.P2_HAS_TYPE_IRI, dimTermNode)
-  dimension.ConnectObject(crm.P91_HAS_UNIT_IRI, unitTermNode)
-  dimension.ConnectLiteral(crm.P90_HAS_VALUE_IRI, value)
-  return nil
-}
-
-func (stmt *stmtWriter) AddDim2D(height *crmjson.Literal, width *crmjson.Literal, unit crm.UnitTerm) error {
-  if height == nil || height.IsEmpty() || width == nil || width.IsEmpty() || unit.IRI() == "" {
-    return ErrParamEmpty
-  }
-
-  // TODO: validate unit, validate values
-  err := stmt.AddDimension(crm.DimensionTermWidth, unit, width)
-  if err != nil {
-    return err
-  }
-
-  err = stmt.AddDimension(crm.DimensionTermHeight, unit, height)
-  if err != nil {
-    return err
-  }
-
-  return nil
-}
-
-func (stmt *stmtWriter) AddMedium(medium *Medium) error {
-  defined := false
-
-  if medium.Note != nil && !medium.Note.IsEmpty() {
-    defined = true
-    stmt.getOrCreateProduction().
-      ConnectLiteral(crm.PX_MEDIUM_NOTE_IRI, medium.Note)
-  }
-
-  for _, material := range medium.Materials {
-    if !material.IsEmpty() {
-      defined = true
-
-      materialTermNode := stmt.entity.NewIRINode(material.IRI)
-      materialTermNode.SetRDFType(crm.E57_MATERIAL_IRI)
-
-      if material.Label != nil && !material.Label.IsEmpty() {
-        materialTermNode.SetRDFLabel(material.Label)
-      }
-
-      stmt.getOrCreateProduction().
-        ConnectObject(crm.P126_EMPLOYED_IRI, materialTermNode)
-    }
-  }
-
-  for _, technique := range medium.Techniques {
-    if !technique.IsEmpty() {
-      defined = true
-
-      techniqueTermNode := stmt.entity.NewIRINode(technique.IRI)
-      techniqueTermNode.SetRDFType(crm.E55_TYPE_IRI)
-
-      if technique.Label != nil && !technique.Label.IsEmpty() {
-        techniqueTermNode.SetRDFLabel(technique.Label)
-      }
-
-      stmt.getOrCreateProduction().
-        ConnectObject(crm.P32_USED_GENERAL_TECHNIQUE_IRI, techniqueTermNode)
-    }
-  }
-
-  if !defined {
-    return ErrParamEmpty
-  }
-
-  return nil
-}
-
-func (stmt *stmtWriter) AddCurrentLocation(location *Location) error {
-  var place crmjson.EntityNode
-  defined := false
-
-  if location.Term != nil && !location.Term.IsEmpty() {
-    // TODO: validate term?
-    place = stmt.entity.NewIRINode(location.Term.IRI).
-      SetRDFType(crm.E53_PLACE_IRI)
-    defined = true
-  } else {
-    place = stmt.entity.NewTypedBlankNode(crm.E53_PLACE_IRI)
-  }
-
-  if location.Lat != nil && !location.Lat.IsEmpty() && location.Lng != nil && !location.Lng.IsEmpty() {
-    defined = true
-
-    if !crmjson.ValidateLatitude(location.Lat.Value) || !crmjson.ValidateLongitude(location.Lng.Value) {
-      return newStmtWriterErr(
-        ErrCodeLatLngInvalid,
-        func(T goi18n.TranslateFunc) string {
-          return T("The ({{.Lat}}, {{.Lng}}) is not a valid coordinate.",
-            map[string]interface{}{
-              "Lat": location.Lat.Value,
-              "Lng": location.Lng.Value,
-            })
-        })
-    }
-
-    coord := stmt.entity.NewTypedBlankNode(crm.E47_SPATIAL_COORDINATES_IRI)
-    coord.ConnectLiteral(crm.WGSLat, crmjson.NewTypedLiteral(location.Lat.Value, crm.XSDDecimal))
-    coord.ConnectLiteral(crm.WGSLng, crmjson.NewTypedLiteral(location.Lng.Value, crm.XSDDecimal))
-    place.ConnectObject(crm.P87_IS_IDENTIFIED_BY_IRI, coord)
-  }
-
-  if location.Name != nil && !location.Name.IsEmpty() {
-    place.ConnectLiteral(crm.RDFSLabel, location.Name)
-    defined = true
-  }
-
-  if !defined {
-    return ErrParamEmpty
-  }
-
-  stmt.entity.Root().ConnectObject(crm.P55_HAS_CURRENT_LOCATION_IRI, place)
-  return nil
-}
-
-// Call this to store information about the owner
-func (stmt *stmtWriter) AddOwner(actor *Actor) error {
-  if actor == nil || actor.IRI == "" {
-    return ErrParamEmpty
-  }
-  // defined := true // false
-  // TODO: this only makes sense for an object statement
-
-  // TODO: check if actor sameAs is a verisart id, if so, we can just use that
-  // instead of a blank node
-  actorNode := stmt.entity.NewIRINode(actor.IRI)
-  stmt.entity.Root().ConnectObject(crm.P52_HAS_CURRENT_OWNER_IRI, actorNode)
-  return nil
-}
-
-// Call this when you want to endorse an actor as the owner.
-func (stmt *stmtWriter) AddFormerOrCurrentOwner(actor *Actor) error {
-  if actor == nil || actor.IRI == "" {
-    return ErrParamEmpty
-  }
-  // defined := true // false
-  // TODO: this only makes sense for an object statement
-
-  // TODO: check if actor sameAs is a verisart id, if so, we can just use that
-  // instead of a blank node
-
-  //crm.VerisartActorIRIByUUID(actor_id)
-  actorNode := stmt.entity.NewIRINode(actor.IRI)
-  stmt.entity.Root().ConnectObject(crm.P51_HAS_FORMER_OR_CURRENT_OWNER_IRI, actorNode)
-  return nil
-}
-*/
-
-
 StmtWriter.prototype.getOrCreateProduction = function() {
   var production = this.subEntities[crm.P108_WAS_PRODUCED_BY_IRI];
 
@@ -643,3 +414,4 @@ module.exports = {
   writeCreateActorStmt: writeCreateActorStmt,
   writeUpdateActorStmt: writeUpdateActorStmt
 };
+*/
