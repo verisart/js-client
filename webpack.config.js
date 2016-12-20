@@ -6,7 +6,7 @@ module.exports = {
     entry: "./src/index.js",
     output: {
         library: 'VerisartClient',
-        libraryTarget: 'umd',
+        libraryTarget: 'var'/*'umd'*/,
         path: "dist",
         filename: "verisart-client.js"
     },
