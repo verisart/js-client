@@ -46926,8 +46926,8 @@ $packages["github.com/verisart/go-prov/certify"] = (function() {
 	};
 	certifier.prototype.Complete = function() { return this.$val.Complete(); };
 	CertifyObject = function(errGen, args) {
-		var $ptr, _arg, _arg$1, _arg$10, _arg$11, _arg$2, _arg$3, _arg$4, _arg$5, _arg$6, _arg$7, _arg$8, _arg$9, _i, _i$1, _i$2, _i$3, _r, _r$1, _r$10, _r$2, _r$3, _r$4, _r$5, _r$6, _r$7, _r$8, _r$9, _ref, _ref$1, _ref$2, _ref$3, _tuple, args, c, dim, err, errGen, hasFrontImage, image, inventoryNumber, note, result, stmt, update, $s, $r;
-		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $ptr = $f.$ptr; _arg = $f._arg; _arg$1 = $f._arg$1; _arg$10 = $f._arg$10; _arg$11 = $f._arg$11; _arg$2 = $f._arg$2; _arg$3 = $f._arg$3; _arg$4 = $f._arg$4; _arg$5 = $f._arg$5; _arg$6 = $f._arg$6; _arg$7 = $f._arg$7; _arg$8 = $f._arg$8; _arg$9 = $f._arg$9; _i = $f._i; _i$1 = $f._i$1; _i$2 = $f._i$2; _i$3 = $f._i$3; _r = $f._r; _r$1 = $f._r$1; _r$10 = $f._r$10; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _r$8 = $f._r$8; _r$9 = $f._r$9; _ref = $f._ref; _ref$1 = $f._ref$1; _ref$2 = $f._ref$2; _ref$3 = $f._ref$3; _tuple = $f._tuple; args = $f.args; c = $f.c; dim = $f.dim; err = $f.err; errGen = $f.errGen; hasFrontImage = $f.hasFrontImage; image = $f.image; inventoryNumber = $f.inventoryNumber; note = $f.note; result = $f.result; stmt = $f.stmt; update = $f.update; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
+		var $ptr, _arg, _arg$1, _arg$10, _arg$11, _arg$12, _arg$2, _arg$3, _arg$4, _arg$5, _arg$6, _arg$7, _arg$8, _arg$9, _i, _i$1, _i$2, _i$3, _r, _r$1, _r$10, _r$11, _r$2, _r$3, _r$4, _r$5, _r$6, _r$7, _r$8, _r$9, _ref, _ref$1, _ref$2, _ref$3, _tuple, args, c, dim, err, errGen, hasFrontImage, image, inventoryNumber, note, result, stmt, update, $s, $r;
+		/* */ $s = 0; var $f, $c = false; if (this !== undefined && this.$blk !== undefined) { $f = this; $c = true; $ptr = $f.$ptr; _arg = $f._arg; _arg$1 = $f._arg$1; _arg$10 = $f._arg$10; _arg$11 = $f._arg$11; _arg$12 = $f._arg$12; _arg$2 = $f._arg$2; _arg$3 = $f._arg$3; _arg$4 = $f._arg$4; _arg$5 = $f._arg$5; _arg$6 = $f._arg$6; _arg$7 = $f._arg$7; _arg$8 = $f._arg$8; _arg$9 = $f._arg$9; _i = $f._i; _i$1 = $f._i$1; _i$2 = $f._i$2; _i$3 = $f._i$3; _r = $f._r; _r$1 = $f._r$1; _r$10 = $f._r$10; _r$11 = $f._r$11; _r$2 = $f._r$2; _r$3 = $f._r$3; _r$4 = $f._r$4; _r$5 = $f._r$5; _r$6 = $f._r$6; _r$7 = $f._r$7; _r$8 = $f._r$8; _r$9 = $f._r$9; _ref = $f._ref; _ref$1 = $f._ref$1; _ref$2 = $f._ref$2; _ref$3 = $f._ref$3; _tuple = $f._tuple; args = $f.args; c = $f.c; dim = $f.dim; err = $f.err; errGen = $f.errGen; hasFrontImage = $f.hasFrontImage; image = $f.image; inventoryNumber = $f.inventoryNumber; note = $f.note; result = $f.result; stmt = $f.stmt; update = $f.update; $s = $f.$s; $r = $f.$r; } s: while (true) { switch ($s) { case 0:
 		result = $ifaceNil;
 		err = ptrType.nil;
 		stmt = $ifaceNil;
@@ -46952,77 +46952,80 @@ $packages["github.com/verisart/go-prov/certify"] = (function() {
 		_r$3 = c.stmt.AddTitle(new stmtwriter.Appellation([crmtypes.NewStringLiteral(args.Title)])); /* */ $s = 8; case 8: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
 		_arg$3 = _r$3;
 		$r = c.AppendErr("title", _arg$2, _arg$3); /* */ $s = 9; case 9: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		/* */ if (args.Dimensions.$length > 0) { $s = 10; continue; }
-		/* */ if (!update) { $s = 11; continue; }
-		/* */ $s = 12; continue;
-		/* if (args.Dimensions.$length > 0) { */ case 10:
+		_r$4 = c.stmt.AddProductionDate(crmtypes.NewTypedLiteral(args.ProductionDate, "http://www.w3.org/2001/XMLSchema#gYear")); /* */ $s = 10; case 10: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
+		_arg$4 = _r$4;
+		$r = c.AppendErr("productionDate", false, _arg$4); /* */ $s = 11; case 11: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		/* */ if (args.Dimensions.$length > 0) { $s = 12; continue; }
+		/* */ if (!update) { $s = 13; continue; }
+		/* */ $s = 14; continue;
+		/* if (args.Dimensions.$length > 0) { */ case 12:
 			_ref = args.Dimensions;
 			_i = 0;
-			/* while (true) { */ case 13:
-				/* if (!(_i < _ref.$length)) { break; } */ if(!(_i < _ref.$length)) { $s = 14; continue; }
+			/* while (true) { */ case 15:
+				/* if (!(_i < _ref.$length)) { break; } */ if(!(_i < _ref.$length)) { $s = 16; continue; }
 				dim = ((_i < 0 || _i >= _ref.$length) ? $throwRuntimeError("index out of range") : _ref.$array[_ref.$offset + _i]);
-				_arg$4 = !update;
-				_r$4 = c.stmt.AddDimension(dim.Type, dim.Unit, crmtypes.NewStringLiteral(dim.Value)); /* */ $s = 15; case 15: if($c) { $c = false; _r$4 = _r$4.$blk(); } if (_r$4 && _r$4.$blk !== undefined) { break s; }
-				_arg$5 = _r$4;
-				$r = c.AppendErrOnce("dimensions", _arg$4, _arg$5); /* */ $s = 16; case 16: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+				_arg$5 = !update;
+				_r$5 = c.stmt.AddDimension(dim.Type, dim.Unit, crmtypes.NewStringLiteral(dim.Value)); /* */ $s = 17; case 17: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
+				_arg$6 = _r$5;
+				$r = c.AppendErrOnce("dimensions", _arg$5, _arg$6); /* */ $s = 18; case 18: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 				_i++;
-			/* } */ $s = 13; continue; case 14:
-			$s = 12; continue;
-		/* } else if (!update) { */ case 11:
-			$r = c.AppendFieldRequiredErr("dimensions"); /* */ $s = 17; case 17: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		/* } */ case 12:
-		_arg$6 = !update;
-		_r$5 = c.stmt.AddMedium(new stmtwriter.Medium.ptr(crmtypes.NewStringLiteral(args.Medium), sliceType.nil, sliceType.nil)); /* */ $s = 18; case 18: if($c) { $c = false; _r$5 = _r$5.$blk(); } if (_r$5 && _r$5.$blk !== undefined) { break s; }
-		_arg$7 = _r$5;
-		$r = c.AppendErr("medium", _arg$6, _arg$7); /* */ $s = 19; case 19: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			/* } */ $s = 15; continue; case 16:
+			$s = 14; continue;
+		/* } else if (!update) { */ case 13:
+			$r = c.AppendFieldRequiredErr("dimensions"); /* */ $s = 19; case 19: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		/* } */ case 14:
+		_arg$7 = !update;
+		_r$6 = c.stmt.AddMedium(new stmtwriter.Medium.ptr(crmtypes.NewStringLiteral(args.Medium), sliceType.nil, sliceType.nil)); /* */ $s = 20; case 20: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
+		_arg$8 = _r$6;
+		$r = c.AppendErr("medium", _arg$7, _arg$8); /* */ $s = 21; case 21: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 		hasFrontImage = false;
 		_ref$1 = args.Images;
 		_i$1 = 0;
-		/* while (true) { */ case 20:
-			/* if (!(_i$1 < _ref$1.$length)) { break; } */ if(!(_i$1 < _ref$1.$length)) { $s = 21; continue; }
+		/* while (true) { */ case 22:
+			/* if (!(_i$1 < _ref$1.$length)) { break; } */ if(!(_i$1 < _ref$1.$length)) { $s = 23; continue; }
 			image = ((_i$1 < 0 || _i$1 >= _ref$1.$length) ? $throwRuntimeError("index out of range") : _ref$1.$array[_ref$1.$offset + _i$1]);
 			if (image.DocumentType === "http://www.verisart.com/id/thesauri/image-document/front") {
 				hasFrontImage = true;
 			}
-			_r$6 = c.stmt.AddImageDocument(image.DocumentType, image.CaptureContext, image.HashKey); /* */ $s = 22; case 22: if($c) { $c = false; _r$6 = _r$6.$blk(); } if (_r$6 && _r$6.$blk !== undefined) { break s; }
-			_arg$8 = _r$6;
-			$r = c.AppendErr("images", false, _arg$8); /* */ $s = 23; case 23: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-			_i$1++;
-		/* } */ $s = 20; continue; case 21:
-		/* */ if (!hasFrontImage) { $s = 24; continue; }
-		/* */ $s = 25; continue;
-		/* if (!hasFrontImage) { */ case 24:
-			_r$7 = errGen.GenerateError("StmtWriter", 1012, false); /* */ $s = 26; case 26: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
+			_r$7 = c.stmt.AddImageDocument(image.DocumentType, image.CaptureContext, image.HashKey); /* */ $s = 24; case 24: if($c) { $c = false; _r$7 = _r$7.$blk(); } if (_r$7 && _r$7.$blk !== undefined) { break s; }
 			_arg$9 = _r$7;
-			$r = c.AppendErr("images", false, _arg$9); /* */ $s = 27; case 27: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
-		/* } */ case 25:
+			$r = c.AppendErr("images", false, _arg$9); /* */ $s = 25; case 25: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			_i$1++;
+		/* } */ $s = 22; continue; case 23:
+		/* */ if (!hasFrontImage) { $s = 26; continue; }
+		/* */ $s = 27; continue;
+		/* if (!hasFrontImage) { */ case 26:
+			_r$8 = errGen.GenerateError("StmtWriter", 1012, false); /* */ $s = 28; case 28: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
+			_arg$10 = _r$8;
+			$r = c.AppendErr("images", false, _arg$10); /* */ $s = 29; case 29: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+		/* } */ case 27:
 		_ref$2 = args.InventoryNumbers;
 		_i$2 = 0;
-		/* while (true) { */ case 28:
-			/* if (!(_i$2 < _ref$2.$length)) { break; } */ if(!(_i$2 < _ref$2.$length)) { $s = 29; continue; }
+		/* while (true) { */ case 30:
+			/* if (!(_i$2 < _ref$2.$length)) { break; } */ if(!(_i$2 < _ref$2.$length)) { $s = 31; continue; }
 			inventoryNumber = ((_i$2 < 0 || _i$2 >= _ref$2.$length) ? $throwRuntimeError("index out of range") : _ref$2.$array[_ref$2.$offset + _i$2]);
-			_r$8 = c.stmt.AddInventoryNumber(crmtypes.NewStringLiteral(inventoryNumber)); /* */ $s = 30; case 30: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
-			_arg$10 = _r$8;
-			$r = c.AppendErr("inventoryNumbers", false, _arg$10); /* */ $s = 31; case 31: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			_r$9 = c.stmt.AddInventoryNumber(crmtypes.NewStringLiteral(inventoryNumber)); /* */ $s = 32; case 32: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
+			_arg$11 = _r$9;
+			$r = c.AppendErr("inventoryNumbers", false, _arg$11); /* */ $s = 33; case 33: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 			_i$2++;
-		/* } */ $s = 28; continue; case 29:
+		/* } */ $s = 30; continue; case 31:
 		_ref$3 = args.Notes;
 		_i$3 = 0;
-		/* while (true) { */ case 32:
-			/* if (!(_i$3 < _ref$3.$length)) { break; } */ if(!(_i$3 < _ref$3.$length)) { $s = 33; continue; }
+		/* while (true) { */ case 34:
+			/* if (!(_i$3 < _ref$3.$length)) { break; } */ if(!(_i$3 < _ref$3.$length)) { $s = 35; continue; }
 			note = ((_i$3 < 0 || _i$3 >= _ref$3.$length) ? $throwRuntimeError("index out of range") : _ref$3.$array[_ref$3.$offset + _i$3]);
-			_r$9 = c.stmt.AddNote(crmtypes.NewStringLiteral(note)); /* */ $s = 34; case 34: if($c) { $c = false; _r$9 = _r$9.$blk(); } if (_r$9 && _r$9.$blk !== undefined) { break s; }
-			_arg$11 = _r$9;
-			$r = c.AppendErr("notes", false, _arg$11); /* */ $s = 35; case 35: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
+			_r$10 = c.stmt.AddNote(crmtypes.NewStringLiteral(note)); /* */ $s = 36; case 36: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
+			_arg$12 = _r$10;
+			$r = c.AppendErr("notes", false, _arg$12); /* */ $s = 37; case 37: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 			_i$3++;
-		/* } */ $s = 32; continue; case 33:
-		_r$10 = c.Complete(); /* */ $s = 36; case 36: if($c) { $c = false; _r$10 = _r$10.$blk(); } if (_r$10 && _r$10.$blk !== undefined) { break s; }
-		_tuple = _r$10;
+		/* } */ $s = 34; continue; case 35:
+		_r$11 = c.Complete(); /* */ $s = 38; case 38: if($c) { $c = false; _r$11 = _r$11.$blk(); } if (_r$11 && _r$11.$blk !== undefined) { break s; }
+		_tuple = _r$11;
 		result = _tuple[0];
 		err = _tuple[1];
 		$s = -1; return [result, err];
 		return [result, err];
-		/* */ } return; } if ($f === undefined) { $f = { $blk: CertifyObject }; } $f.$ptr = $ptr; $f._arg = _arg; $f._arg$1 = _arg$1; $f._arg$10 = _arg$10; $f._arg$11 = _arg$11; $f._arg$2 = _arg$2; $f._arg$3 = _arg$3; $f._arg$4 = _arg$4; $f._arg$5 = _arg$5; $f._arg$6 = _arg$6; $f._arg$7 = _arg$7; $f._arg$8 = _arg$8; $f._arg$9 = _arg$9; $f._i = _i; $f._i$1 = _i$1; $f._i$2 = _i$2; $f._i$3 = _i$3; $f._r = _r; $f._r$1 = _r$1; $f._r$10 = _r$10; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f._r$8 = _r$8; $f._r$9 = _r$9; $f._ref = _ref; $f._ref$1 = _ref$1; $f._ref$2 = _ref$2; $f._ref$3 = _ref$3; $f._tuple = _tuple; $f.args = args; $f.c = c; $f.dim = dim; $f.err = err; $f.errGen = errGen; $f.hasFrontImage = hasFrontImage; $f.image = image; $f.inventoryNumber = inventoryNumber; $f.note = note; $f.result = result; $f.stmt = stmt; $f.update = update; $f.$s = $s; $f.$r = $r; return $f;
+		/* */ } return; } if ($f === undefined) { $f = { $blk: CertifyObject }; } $f.$ptr = $ptr; $f._arg = _arg; $f._arg$1 = _arg$1; $f._arg$10 = _arg$10; $f._arg$11 = _arg$11; $f._arg$12 = _arg$12; $f._arg$2 = _arg$2; $f._arg$3 = _arg$3; $f._arg$4 = _arg$4; $f._arg$5 = _arg$5; $f._arg$6 = _arg$6; $f._arg$7 = _arg$7; $f._arg$8 = _arg$8; $f._arg$9 = _arg$9; $f._i = _i; $f._i$1 = _i$1; $f._i$2 = _i$2; $f._i$3 = _i$3; $f._r = _r; $f._r$1 = _r$1; $f._r$10 = _r$10; $f._r$11 = _r$11; $f._r$2 = _r$2; $f._r$3 = _r$3; $f._r$4 = _r$4; $f._r$5 = _r$5; $f._r$6 = _r$6; $f._r$7 = _r$7; $f._r$8 = _r$8; $f._r$9 = _r$9; $f._ref = _ref; $f._ref$1 = _ref$1; $f._ref$2 = _ref$2; $f._ref$3 = _ref$3; $f._tuple = _tuple; $f.args = args; $f.c = c; $f.dim = dim; $f.err = err; $f.errGen = errGen; $f.hasFrontImage = hasFrontImage; $f.image = image; $f.inventoryNumber = inventoryNumber; $f.note = note; $f.result = result; $f.stmt = stmt; $f.update = update; $f.$s = $s; $f.$r = $r; return $f;
 	};
 	$pkg.CertifyObject = CertifyObject;
 	ptrType$5.methods = [{prop: "AppendErr", name: "AppendErr", pkg: "", typ: $funcType([$String, $Bool, $error], [], false)}, {prop: "AppendErrOnce", name: "AppendErrOnce", pkg: "", typ: $funcType([$String, $Bool, $error], [], false)}, {prop: "AppendFieldRequiredErr", name: "AppendFieldRequiredErr", pkg: "", typ: $funcType([$String], [], false)}, {prop: "Complete", name: "Complete", pkg: "", typ: $funcType([], [$emptyInterface, ptrType], false)}];
