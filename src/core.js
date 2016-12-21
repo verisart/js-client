@@ -46996,9 +46996,9 @@ $packages["github.com/verisart/go-prov/certify"] = (function() {
 			$r = c.AppendErr("images", false, _arg$9); /* */ $s = 25; case 25: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
 			_i$1++;
 		/* } */ $s = 22; continue; case 23:
-		/* */ if (!hasFrontImage) { $s = 26; continue; }
+		/* */ if (!hasFrontImage && !update) { $s = 26; continue; }
 		/* */ $s = 27; continue;
-		/* if (!hasFrontImage) { */ case 26:
+		/* if (!hasFrontImage && !update) { */ case 26:
 			_r$8 = errGen.GenerateError("StmtWriter", 1012, false); /* */ $s = 28; case 28: if($c) { $c = false; _r$8 = _r$8.$blk(); } if (_r$8 && _r$8.$blk !== undefined) { break s; }
 			_arg$10 = _r$8;
 			$r = c.AppendErr("images", false, _arg$10); /* */ $s = 29; case 29: if($c) { $c = false; $r = $r.$blk(); } if ($r && $r.$blk !== undefined) { break s; }
