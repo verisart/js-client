@@ -45850,7 +45850,7 @@ $packages["github.com/verisart/go-prov/stmtwriter"] = (function() {
 			$s = -1; return _r$2;
 			return _r$2;
 		/* } */ case 8:
-		_r$3 = stmt.entity.Root().ConnectObject("http://www.cidoc-crm.org/cidoc-crm/P131_is_identified_by", actorName); /* */ $s = 10; case 10: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
+		_r$3 = actor.ConnectObject("http://www.cidoc-crm.org/cidoc-crm/P131_is_identified_by", actorName); /* */ $s = 10; case 10: if($c) { $c = false; _r$3 = _r$3.$blk(); } if (_r$3 && _r$3.$blk !== undefined) { break s; }
 		_r$3;
 		$s = -1; return $ifaceNil;
 		return $ifaceNil;
@@ -47305,7 +47305,7 @@ $packages["github.com/verisart/go-prov/subprojects/gengopherjs"] = (function() {
 	$pkg.Wrap = Wrap;
 	main = function() {
 		var $ptr;
-		$module.exports = $externalize($makeMap($String.keyFor, [{ k: "crm", v: new mapType(crmConsts) }, { k: "certify", v: new mapType(certifyConsts) }, { k: "certifyObject", v: new funcType(CertifyObject) }, { k: "certifyActor", v: new funcType(CertifyActor) }]), mapType);
+		$module.exports = $externalize($makeMap($String.keyFor, [{ k: "crm", v: new mapType(crmConsts) }, { k: "certify", v: new mapType(certifyConsts) }, { k: "certifyObject", v: new funcType(CertifyObject) }, { k: "certifyActor", v: new funcType(CertifyActor) }, { k: "types", v: new mapType($makeMap($String.keyFor, [])) }, { k: "validator", v: new mapType($makeMap($String.keyFor, [])) }]), mapType);
 	};
 	CertifyObject = function(args) {
 		var $ptr, _r, _r$1, _r$2, _r$3, _tuple, _tuple$1, args, b, err, res, wArgs, $s, $r;
