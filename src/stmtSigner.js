@@ -40,7 +40,13 @@ function sign(privKeyBytes, msg) {
   return signer.sign(msg);
 }
 
+function getPublicKey(privKeyBytes) {
+  var signer = new StmtSigner(privKeyBytes);
+  return signer.publicKey;
+}
+
 module.exports = {
   StmtSigner: StmtSigner,
-  sign: sign
+  sign: sign,
+  getPublicKey: getPublicKey
 };

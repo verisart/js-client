@@ -16,3 +16,10 @@ describe('StmtSigner', function() {
     });
   });
 });
+
+describe('StmtSigner PublicKey', function() {
+  it('gets public key from private key', function () {
+    var publicKey = stmtSigner.getPublicKey('a6fb698ed6bfa2a2053cb0a9e897b8592b27b86485fc337a2897a091861942c9');
+    expect(publicKey).toEqual("0231a0e610bd39850bba7501e855896c2d0c45afbc84bed79838337567ae27c483");
+  });
+});
