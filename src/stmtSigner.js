@@ -48,5 +48,6 @@ function getPublicKey(privKeyBytes) {
 module.exports = {
   StmtSigner: StmtSigner,
   sign: sign,
-  getPublicKey: getPublicKey
+  getPublicKey: getPublicKey,
+  getFingerprint: getPublicKey
 };
