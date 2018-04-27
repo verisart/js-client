@@ -15,7 +15,7 @@ StmtSigner.prototype.sign = function(msg) {
 
   // Base64 encode the stmt
   var msgBase64 = cryptoJS.enc.Base64.stringify(cryptoJS.enc.Utf8.parse(msg));
-  var msgHash = cryptoJS.SHA256(cryptoJS.lib.WordArray.create(msgBase64)).toString(cryptoJS.enc.Hex);
+  var msgHash = cryptoJS.SHA256(msgBase64).toString(cryptoJS.enc.Hex);
 
   // Sign the hash
   var signature = this.keyPair.sign(msgHash);

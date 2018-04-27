@@ -11,7 +11,7 @@ describe('StmtSigner', function() {
       "signatures": [{
           "publicKey": "0231a0e610bd39850bba7501e855896c2d0c45afbc84bed79838337567ae27c483",
           "fingerprint": "0231a0e610bd39850bba7501e855896c2d0c45afbc84bed79838337567ae27c483",
-          "signature": "MEUCIQCnaOErAp8ASofzXTqHwTGJZ53B7qwjk15iqewUEdODtAIgc7L1E/FEZW54GjrWiJsn8wQioCkHKhfmPhIMBWnPHnQ="
+          "signature": "MEQCIB5v/6tdXCu8Hmc375adUpHPpY29nKN7oRDlp8OZWyJzAiB6aJn833ylv2v1gYGDSfRmrgiJ6Coy2vx2W+4scOntqA=="
         }]
     });
   });
